@@ -41,8 +41,10 @@ async (accessToken, refreshToken, profile, done) => {
         firstName: profile.name.givenName,
         lastName: profile.name.familyName,
         email: profile.emails[0].value,
-        username: profile.displayName
+        username: profile.displayName,
+        authProvider: 'google'
       });
+      console.log('User created:', user);
     }
     return done(null, user);
   } catch (err) {
@@ -68,7 +70,8 @@ async (accessToken, refreshToken, profile, done) => {
         email: profile.emails[0].value,
         username: profile.displayName,
         authProvider: 'facebook'
-      });
+      })
+      
     }
     return done(null, user);
   } catch (err) {
